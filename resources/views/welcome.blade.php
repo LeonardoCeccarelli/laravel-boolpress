@@ -16,23 +16,36 @@
 
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
+        <div>
             @if (Route::has('login'))
-                <div class="top-right links text-center">
-                    @auth
-                        <a href="{{ route("admin.home") }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
-                </div>
+                <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm mb-3">
+                    <div class="container-fluid">
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav me-auto mb-2 mb-lg-0 ml-auto">
+                                @auth
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ route("admin.home") }}">Home</a>
+                                    </li>
+                                @else
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ route('login') }}">Login</a>
+                                    </li>
+                                    @if (Route::has('register'))
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{{ route('register') }}">Register</a>
+                                        </li>
+                                    @endif
+                                @endauth
+                            </ul>
+                        </div>
+                    </div>  
+                </nav>
             @endif
-
             <div id="app">
-                
+                {{-- Content Vue here --}}
             </div>
         </div>
     </body>

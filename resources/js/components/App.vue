@@ -1,5 +1,5 @@
 <template>
-  <h1>{{ welcomeMsg }}</h1>
+  <h1 class="text-center">{{ welcomeMsg }}</h1>
 </template>
 
 <script>
@@ -7,7 +7,7 @@ export default {
   name: "App",
   data() {
     return {
-      welcomeMsg: "Benvenuto Guest",
+      welcomeMsg: "Benvenuto nel mio sito",
     };
   },
 };
