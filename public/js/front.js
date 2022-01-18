@@ -1963,6 +1963,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Post",
   props: {
@@ -37561,7 +37565,7 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("section", [
+  return _c("section", { staticClass: "body_homepage" }, [
     _c("div", { staticClass: "container mb-5" }, [
       _c(
         "div",
@@ -37597,7 +37601,7 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "col py-4" }, [
-    _c("div", { staticClass: "card" }, [
+    _c("div", { staticClass: "card post_card" }, [
       _c("img", {
         staticClass: "card-img-top",
         attrs: { src: "", alt: "post_image" },
@@ -37614,6 +37618,10 @@ var render = function () {
         _vm._v(" "),
         _c("p", { staticClass: "card-text" }, [
           _vm._v(_vm._s(_vm.post.content)),
+        ]),
+        _vm._v(" "),
+        _c("p", { staticClass: "mb-0 author_name" }, [
+          _c("small", [_vm._v(_vm._s(_vm.post.author))]),
         ]),
       ]),
     ]),

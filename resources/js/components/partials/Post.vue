@@ -1,11 +1,15 @@
 <template>
   <div class="col py-4">
-    <div class="card">
+    <div class="card post_card">
       <img src="" class="card-img-top" alt="post_image" />
       <div class="card-body">
         <h5 class="card-title">{{ post.title }}</h5>
         <h6 v-if="post.subtitle">{{ post.subtitle }}</h6>
         <p class="card-text">{{ post.content }}</p>
+
+        <p class="mb-0 author_name">
+          <small>{{ post.author }}</small>
+        </p>
       </div>
     </div>
   </div>

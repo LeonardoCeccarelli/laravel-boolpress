@@ -44,7 +44,7 @@
                     </div>  
                 </nav>
             @endif
-            <div class="hero_section mb-5">
+            <div class="hero_section">
                 <h1 class="main_title">Boolean Blog</h1>
             </div>
             <div id="app">

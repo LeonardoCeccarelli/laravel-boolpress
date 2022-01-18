@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section class="body_homepage">
     <div class="container mb-5">
       <div class="row row-cols-1">
         <Post v-for="(post, i) in listPost" :key="i" :post="post"></Post>
