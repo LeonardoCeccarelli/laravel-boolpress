@@ -11,7 +11,7 @@
                 <label for="field_title" class="form-label">Titolo</label>
                 <input type="text" class="form-control {{ $errors->has("title") ? 'is-invalid' : '' }}" 
                  name="title" id="field_title"
-                 value="{{ old("title") }}">
+                 value="{{ old("title") ?? $post->title }}">
     
                 @if($errors->has("title"))
                 <div class="invalid-feedback">
@@ -24,7 +24,7 @@
                 <label for="field_subtitle" class="form-label">Sottotitolo</label>
                 <input type="text" class="form-control {{ $errors->has("subtitle") ? 'is-invalid' : '' }}" 
                  name="subtitle" id="field_subtitle"
-                 value="{{ old("subtitle") }}">
+                 value="{{ old("subtitle") ?? $post->subtitle }}">
     
                 @if($errors->has("subtitle"))
                 <div class="invalid-feedback">
@@ -37,7 +37,7 @@
                 <label for="field_content" class="form-label">Contenuto</label>
                 <input type="text"  class="form-control {{ $errors->has("content") ? 'is-invalid' : '' }}" 
                  name="content" id="field_content"
-                 value="{{ old("content") }}">
+                 value="{{ old("content") ?? $post->content }}">
     
                 @if($errors->has("content"))
                 <div class="invalid-feedback">
@@ -57,7 +57,7 @@
                 <label for="field_coverImg" class="form-label">Link Immagine</label>
                 <input type="text" class="form-control {{ $errors->has("coverImg") ? 'is-invalid' : '' }}" 
                  name="coverImg" id="field_coverImg"
-                 value="{{ old("coverImg") }}">
+                 value="{{ old("coverImg") ?? $post->coverImg }}">
     
                 @if($errors->has("coverImg"))
                 <div class="invalid-feedback">
@@ -70,7 +70,7 @@
                 <label for="field_category" class="form-label">Categoria</label>
                 <input type="text" class="form-control {{ $errors->has("category") ? 'is-invalid' : '' }}" 
                  name="category" id="field_category"
-                 value="{{ old("category") }}">
+                 value="{{ old("category") ?? $post->category }}">
     
                 @if($errors->has("category"))
                 <div class="invalid-feedback">
