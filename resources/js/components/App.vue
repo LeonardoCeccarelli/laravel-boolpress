@@ -1,14 +1,12 @@
 <template>
-  <h1 class="text-center">{{ welcomeMsg }}</h1>
+  <div></div>
 </template>
 
 <script>
 export default {
   name: "App",
   data() {
-    return {
-      welcomeMsg: "Benvenuto nel mio sito",
-    };
+    return {};
   },
 };
 </script>

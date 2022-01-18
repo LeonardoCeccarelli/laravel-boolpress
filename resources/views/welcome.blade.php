@@ -18,7 +18,7 @@
     <body>
         <div>
             @if (Route::has('login'))
-                <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm mb-3">
+                <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
                     <div class="container-fluid">
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
@@ -44,6 +44,9 @@
                     </div>  
                 </nav>
             @endif
+            <div class="hero_section mb-3">
+                <h1 class="main_title">Boolean Blog</h1>
+            </div>
             <div id="app">
                 {{-- Content Vue here --}}
             </div>
