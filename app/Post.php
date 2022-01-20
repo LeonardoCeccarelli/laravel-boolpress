@@ -13,8 +13,18 @@ class Post extends Model
         "title",
         "subtitle",
         "content",
-        "author",
+        "user_id",
         "coverImg",
-        "category"
+        "category_id"
     ];
+
+    public function user()
+    {
+        return $this->belongsTo("App/User", "user_id");
+    }
+
+    public function categories()
+    {
+        return $this->hasMany("App/Category");
+    }
 }

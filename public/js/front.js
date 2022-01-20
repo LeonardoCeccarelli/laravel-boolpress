@@ -37619,10 +37619,6 @@ var render = function () {
         _c("p", { staticClass: "card-text" }, [
           _vm._v(_vm._s(_vm.post.content)),
         ]),
-        _vm._v(" "),
-        _c("p", { staticClass: "mb-0 author_name" }, [
-          _c("small", [_vm._v(_vm._s(_vm.post.author))]),
-        ]),
       ]),
     ]),
   ])

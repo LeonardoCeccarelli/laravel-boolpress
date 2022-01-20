@@ -18,9 +18,7 @@ class CreatePostsTable extends Migration
             $table->char("title", 255);
             $table->char("subtitle", 255)->nullable();
             $table->longText("content");
-            $table->char("author", 255);
             $table->char("coverImg", 255)->nullable();
-            $table->char("category", 255);
             $table->timestamps();
         });
     }

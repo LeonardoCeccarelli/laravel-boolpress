@@ -7,9 +7,9 @@
         <h6 v-if="post.subtitle">{{ post.subtitle }}</h6>
         <p class="card-text">{{ post.content }}</p>
 
-        <p class="mb-0 author_name">
+        <!-- <p class="mb-0 author_name">
           <small>{{ post.author }}</small>
-        </p>
+        </p> -->
       </div>
     </div>
   </div>

@@ -46,12 +46,12 @@
                 @endif
             </div>
 
-            <div class="mb-4 w-75">
+            {{-- <div class="mb-4 w-75">
                 <label for="field_author" class="form-label">Autore</label>
                 <input type="text" class="form-control" 
                  name="author" id="field_author"
                  value="{{ Auth::user()->name }}" readonly>
-            </div>
+            </div> --}}
     
             <div class="mb-4 w-75">
                 <label for="field_coverImg" class="form-label">Link Immagine</label>
@@ -66,7 +66,7 @@
                 @endif
             </div>
 
-            <div class="mb-4 w-75">
+            {{-- <div class="mb-4 w-75">
                 <label for="field_category" class="form-label">Categoria</label>
                 <input type="text" class="form-control {{ $errors->has("category") ? 'is-invalid' : '' }}" 
                  name="category" id="field_category"
@@ -77,7 +77,7 @@
                     {{ $errors->get("category")[0]}}
                 </div>
                 @endif
-            </div>
+            </div> --}}
 
             <div>
                 <button type="submit" class="btn btn-success">Modifica</button>

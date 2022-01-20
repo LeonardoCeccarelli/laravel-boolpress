@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Post;
+use App\Category;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -27,7 +29,9 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view("admin.posts.create");
+        $categories = Category::all();
+
+        return view("admin.posts.create", compact("categories"));
     }
 
     /**
@@ -38,19 +42,17 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-
         $request->validate([
             "title" => "required|max:255",
             "subtitle" => "max:255",
             "content" => "required",
-            "author" => "required|max:255",
             "coverImg" => "max:255",
-            "category" => "required|max:255"
         ]);
 
         $data = $request->all();
         $newPost = new Post();
         $newPost->fill($data);
+        $newPost->user_id = Auth::user()->id;
 
         $newPost->save();
 
@@ -92,9 +94,7 @@ class PostController extends Controller
             "title" => "required|max:255",
             "subtitle" => "max:255",
             "content" => "required",
-            "author" => "required|max:255",
             "coverImg" => "max:255",
-            "category" => "required|max:255"
         ]);
 
         $data = $request->all();

@@ -33,22 +33,14 @@
 
             <div class="mb-4 w-75">
                 <label for="field_content" class="form-label">Contenuto</label>
-                <input type="text"  class="form-control {{ $errors->has("content") ? 'is-invalid' : '' }}" 
-                 name="content" id="field_content"
-                 value="{{ old("content") }}">
+                <textarea type="text" rows="5" class="form-control {{ $errors->has("content") ? 'is-invalid' : '' }}" 
+                 name="content" id="field_content">{{ old("content") }}</textarea>
     
                 @if($errors->has("content"))
                 <div class="invalid-feedback">
                     {{ $errors->get("content")[0]}}
                 </div>
                 @endif
-            </div>
-
-            <div class="mb-4 w-75">
-                <label for="field_author" class="form-label">Autore</label>
-                <input type="text" class="form-control" 
-                 name="author" id="field_author"
-                 value="{{ Auth::user()->name }}" readonly>
             </div>
     
             <div class="mb-4 w-75">
@@ -65,16 +57,20 @@
             </div>
 
             <div class="mb-4 w-75">
-                <label for="field_category" class="form-label">Categoria</label>
-                <input type="text" class="form-control {{ $errors->has("category") ? 'is-invalid' : '' }}" 
-                 name="category" id="field_category"
-                 value="{{ old("category") }}">
-    
-                @if($errors->has("category"))
-                <div class="invalid-feedback">
-                    {{ $errors->get("category")[0]}}
+                <div class="form-group">
+                    <label class="form-label">Categoria</label>
+                    <select name="category_id" class="form-control">
+                      @foreach($categories as $category)
+                      <option value="{{$category->id}}">{{$category->name}}</option>
+                      @endforeach
+                    </select>
                 </div>
-                @endif
+            </div>
+
+            <div class="mb-4 w-75">
+                <label for="field_author" class="form-label">Autore</label>
+                <input type="text" class="form-control" id="field_author"
+                 value="{{ Auth::user()->name }}" readonly>
             </div>
 
             <div>
@@ -83,4 +79,10 @@
     
         </form>
     </div>
+
+    <script src="//js.nicedit.com/nicEdit-latest.js" type="text/javascript">
+    </script>
+    <script type="text/javascript">
+      bkLib.onDomLoaded(nicEditors.allTextAreas);
+    </script>
 @endsection
