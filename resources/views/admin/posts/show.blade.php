@@ -12,9 +12,9 @@
             {!! $post->content !!}
         </p>
 
-        <h3>Categoria: {{ $post->category->name }}</h3>
+        <h4>Categoria: {{ $post->category->name }}</h3>
 
-        <h3>Autore: {{ $post->user->name }}</h3>
+        <h4 class="mb-4">Autore: {{ $post->user->name }}</h3>
         
         <div class="d-flex">
             <a href="{{ route('admin.posts.edit', $post->id) }}" class="btn btn-success">Modifica</a>
