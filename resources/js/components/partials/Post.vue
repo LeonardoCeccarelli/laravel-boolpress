@@ -3,13 +3,23 @@
     <div class="card post_card">
       <img src="" class="card-img-top" alt="post_image" />
       <div class="card-body">
-        <h5 class="card-title">{{ post.title }}</h5>
-        <h6 v-if="post.subtitle">{{ post.subtitle }}</h6>
-        <p class="card-text">{{ post.content }}</p>
+        <h5 class="card-title mb-3">{{ post.title }}</h5>
 
-        <!-- <p class="mb-0 author_name">
-          <small>{{ post.author }}</small>
-        </p> -->
+        <h6 class="mb-3" v-if="post.subtitle">{{ post.subtitle }}</h6>
+
+        <p class="card-text my-5" v-html="post.content"></p>
+
+        <h6 class="class-text">
+          Categoria: <span class="text-success">{{ post.category.name }}</span>
+        </h6>
+
+        <p class="mb-0 author_name">
+          <small>
+            {{ post.user.name }}
+            <br />
+            {{ post.created_at }}
+          </small>
+        </p>
       </div>
     </div>
   </div>

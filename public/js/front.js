@@ -1967,6 +1967,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Post",
   props: {
@@ -37608,16 +37618,36 @@ var render = function () {
       }),
       _vm._v(" "),
       _c("div", { staticClass: "card-body" }, [
-        _c("h5", { staticClass: "card-title" }, [
+        _c("h5", { staticClass: "card-title mb-3" }, [
           _vm._v(_vm._s(_vm.post.title)),
         ]),
         _vm._v(" "),
         _vm.post.subtitle
-          ? _c("h6", [_vm._v(_vm._s(_vm.post.subtitle))])
+          ? _c("h6", { staticClass: "mb-3" }, [
+              _vm._v(_vm._s(_vm.post.subtitle)),
+            ])
           : _vm._e(),
         _vm._v(" "),
-        _c("p", { staticClass: "card-text" }, [
-          _vm._v(_vm._s(_vm.post.content)),
+        _c("p", {
+          staticClass: "card-text my-5",
+          domProps: { innerHTML: _vm._s(_vm.post.content) },
+        }),
+        _vm._v(" "),
+        _c("h6", { staticClass: "class-text" }, [
+          _vm._v("\n        Categoria: "),
+          _c("span", { staticClass: "text-success" }, [
+            _vm._v(_vm._s(_vm.post.category.name)),
+          ]),
+        ]),
+        _vm._v(" "),
+        _c("p", { staticClass: "mb-0 author_name" }, [
+          _c("small", [
+            _vm._v(
+              "\n          " + _vm._s(_vm.post.user.name) + "\n          "
+            ),
+            _c("br"),
+            _vm._v("\n          " + _vm._s(_vm.post.created_at) + "\n        "),
+          ]),
         ]),
       ]),
     ]),
