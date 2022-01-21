@@ -11013,3 +11013,11 @@ a.text-dark:focus {
   opacity: 1;
 }
 
+.info_section {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 0px 40px;
+}
+

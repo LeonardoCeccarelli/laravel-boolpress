@@ -12,9 +12,16 @@
             {!! $post->content !!}
         </p>
 
-        <h4>Categoria: {{ $post->category->name }}</h3>
+        <h4>Categoria: {{ $post->category->name }}</h4>
 
-        <h4 class="mb-4">Autore: {{ $post->user->name }}</h3>
+        <h4>Tags:
+            @foreach ($post->tags as $tag)
+            <h6 class="d-inline-block"><span class="badge badge-secondary">{{ $tag->name }}</span></h6>
+            @endforeach
+        </h4>
+            
+
+        <h4 class="mb-4">Autore: {{ $post->user->name }}</h4>
         
         <div class="d-flex">
             <a href="{{ route('admin.posts.edit', $post->id) }}" class="btn btn-success">Modifica</a>

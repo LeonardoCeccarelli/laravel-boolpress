@@ -34,9 +34,9 @@
             </div>
 
             <div class="mb-4 w-75">
-                <label for="field_content" class="form-label">Contenuto</label>
+                <label class="form-label">Contenuto</label>
                 <textarea type="text" rows="5" class="form-control {{ $errors->has("content") ? 'is-invalid' : '' }}" 
-                 name="content" id="field_content">{{ old("content") ?? $post->content }}</textarea>
+                 name="content">{{ old("content") ?? $post->content }}</textarea>
     
                 @if($errors->has("content"))
                 <div class="invalid-feedback">
@@ -58,18 +58,39 @@
                 @endif
             </div>
 
-            <div class="mb-4 w-75">
-                <div class="form-group">
-                    <label class="form-label">Categoria</label>
-                    <select name="category_id" class="form-control">
-                    @foreach($categories as $category)
-                        <option value="{{$category->id}}" 
-                        @if ($category->id === $post->category_id) selected @endif>
-                            {{$category->name}}
-                        </option>
-                      @endforeach
-                    </select>
+            <div class="d-flex justify-content-between w-75 mb-4">
+
+                <div>
+                    <div class="form-group">
+                        <label for="field_category_id" class="form-label">Categoria</label>
+                        <select name="category_id" class="form-control"
+                        id="field_category_id">
+                        @foreach($categories as $category)
+                            <option value="{{$category->id}}" 
+                            @if ($category->id === $post->category_id) selected @endif>
+                                {{$category->name}}
+                            </option>
+                        @endforeach
+                        </select>
+                    </div>
                 </div>
+
+                <div>
+                    <div class="form-group">
+                        <label for="field_tags" class="form-label">Tags</label>
+                        <small class="text-secondary mb-0 ml-3 pt-1 d-inline-block">Hold down the Ctrl (windows) or Command (Mac) button to select multiple options.</small>
+                        <select name="tags[]" class="form-control" multiple
+                        id="field_tags">
+                        @foreach($tags as $tag)
+                            <option value="{{$tag->id}}" 
+                            @if ($post->tags->contains($tag)) selected @endif>
+                                {{$tag->name}}
+                            </option>
+                        @endforeach
+                        </select>
+                    </div>
+                </div>
+
             </div>
 
             <div class="mb-4 w-75">
