@@ -61,7 +61,9 @@ class PostController extends Controller
 
         $newPost->save();
 
-        $newPost->tags()->sync($data["tags"]);
+        if (array_key_exists("tags", $data)) {
+            $newPost->tags()->sync($data["tags"]);
+        }
 
         return redirect()->route("admin.posts.show", $newPost->id);
     }
@@ -116,7 +118,13 @@ class PostController extends Controller
 
         $post->save();
 
-        $post->tags()->sync($data["tags"]);
+        // dd($data);
+
+        if (array_key_exists("tags", $data)) {
+            $post->tags()->sync($data["tags"]);
+        } else {
+            $post->tags()->detach();
+        }
 
         return redirect()->route("admin.posts.show", $post->id);
     }
@@ -129,6 +137,8 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
+        $post->tags()->detach();
+
         $post->delete();
 
         return redirect()->route("admin.posts.index");

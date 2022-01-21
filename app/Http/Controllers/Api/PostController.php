@@ -10,7 +10,10 @@ class PostController extends Controller
 {
     public function getAll()
     {
-        $data = Post::with("category")->with("user")->get();
+        $data = Post::with("category")
+            ->with("user")
+            ->with("tags")
+            ->get();
 
         return $data;
     }

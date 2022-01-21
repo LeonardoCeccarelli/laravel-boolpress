@@ -13,6 +13,16 @@
           Categoria: <span class="text-success">{{ post.category.name }}</span>
         </h6>
 
+        <div>
+          <h6
+            class="d-inline-block mr-1"
+            v-for="tag in post.tags"
+            :key="tag.id"
+          >
+            <span class="badge badge-secondary">{{ tag.name }}</span>
+          </h6>
+        </div>
+
         <p class="mb-0 author_name">
           <small>
             {{ post.user.name }}

@@ -1977,6 +1977,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Post",
   props: {
@@ -37639,6 +37649,22 @@ var render = function () {
             _vm._v(_vm._s(_vm.post.category.name)),
           ]),
         ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          _vm._l(_vm.post.tags, function (tag) {
+            return _c(
+              "h6",
+              { key: tag.id, staticClass: "d-inline-block mr-1" },
+              [
+                _c("span", { staticClass: "badge badge-secondary" }, [
+                  _vm._v(_vm._s(tag.name)),
+                ]),
+              ]
+            )
+          }),
+          0
+        ),
         _vm._v(" "),
         _c("p", { staticClass: "mb-0 author_name" }, [
           _c("small", [

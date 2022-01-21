@@ -21,7 +21,7 @@
 
                                 <p class="card-text mb-2">Categoria: <span class="text-success">{{ $post->category->name }}</span></p>
                             
-                                @if ($post->tags->count() > 0)
+                                @if ($post->tags->count())
                                 <div class="mb-5">
                                     @foreach ($post->tags as $tag)
                                     <h6 class="d-inline-block"><span class="badge badge-secondary">{{ $tag->name }}</span></h6>
