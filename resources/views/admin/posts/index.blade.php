@@ -9,7 +9,7 @@
                 @foreach ($posts as $post)
                     <div class="col py-3">
                         <div class="card h-100 position-relative pb-5">
-                            <img src="" class="card-img-top" alt="post_image">
+                            <img src="{{ $post->coverImg }}" class="card-img-top w-25" alt="post_image">
                             <div class="card-body mb-3">
                               <h5 class="card-title text-center text-danger text-uppercase mb-2">{{ $post->title }}</h5>
 
