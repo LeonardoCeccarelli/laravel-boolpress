@@ -11013,11 +11013,20 @@ a.text-dark:focus {
   opacity: 1;
 }
 
-.info_section {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  padding: 0px 40px;
+.card {
+  overflow: hidden;
+}
+
+.card .btn_hover {
+  opacity: 0;
+  transition: opacity 0.2s linear;
+}
+
+.card:hover .btn_hover {
+  opacity: 1;
+}
+
+.admin_show_item > small {
+  font-size: 18px;
 }
 
