@@ -5318,6 +5318,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "PostPageControl",
   props: {
@@ -39154,24 +39156,31 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "row" }, [
     _c("div", { staticClass: "col justify-content-center d-flex py-5" }, [
-      _c("nav", [
+      _c("nav", { staticClass: "nav_page_control" }, [
         _c(
           "ul",
-          { staticClass: "pagination" },
+          { staticClass: "pagination mb-0" },
           [
-            _c("li", [
+            _c("li", { staticClass: "page-item" }, [
               _c(
                 "button",
                 {
                   staticClass: "page-link",
-                  attrs: { disabled: _vm.currentPage === 1 },
+                  attrs: {
+                    "aria-label": "Previous",
+                    disabled: _vm.currentPage === 1,
+                  },
                   on: {
                     click: function ($event) {
                       return _vm.$emit("before_page_btn", _vm.currentPage - 1)
                     },
                   },
                 },
-                [_vm._v("\n            ←\n          ")]
+                [
+                  _c("span", { attrs: { "aria-hidden": "true" } }, [
+                    _vm._v("«"),
+                  ]),
+                ]
               ),
             ]),
             _vm._v(" "),
@@ -39206,19 +39215,26 @@ var render = function () {
               )
             }),
             _vm._v(" "),
-            _c("li", [
+            _c("li", { staticClass: "page-item" }, [
               _c(
                 "button",
                 {
                   staticClass: "page-link",
-                  attrs: { disabled: _vm.currentPage === _vm.lastPage },
+                  attrs: {
+                    "aria-label": "Next",
+                    disabled: _vm.currentPage === _vm.lastPage,
+                  },
                   on: {
                     click: function ($event) {
                       return _vm.$emit("after_page_btn", _vm.currentPage + 1)
                     },
                   },
                 },
-                [_vm._v("\n            →\n          ")]
+                [
+                  _c("span", { attrs: { "aria-hidden": "true" } }, [
+                    _vm._v("»"),
+                  ]),
+                ]
               ),
             ]),
           ],

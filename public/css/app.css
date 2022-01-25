@@ -12181,7 +12181,7 @@ fieldset:disabled .btn {
 .body_homepage {
   background-color: #303030;
   padding: 70px 0;
-  border-bottom: 7px solid black;
+  border-bottom: 5px solid white;
 }
 
 .hero_section {
@@ -12228,6 +12228,15 @@ fieldset:disabled .btn {
 
 .post_card:hover .author_name {
   opacity: 1;
+}
+
+.nav_page_control {
+  box-shadow: 0px 10px 13px -7px #000000, 0px 0px 20px 15px rgba(0, 0, 0, 0.37);
+  transition: all 0.2s ease-in-out;
+}
+
+.nav_page_control:hover {
+  box-shadow: 0px 10px 13px -7px #000000, 0px 0px 15px 20px rgba(0, 0, 0, 0.37);
 }
 
 .card {

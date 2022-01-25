@@ -1,15 +1,16 @@
 <template>
   <div class="row">
     <div class="col justify-content-center d-flex py-5">
-      <nav>
-        <ul class="pagination">
-          <li>
+      <nav class="nav_page_control">
+        <ul class="pagination mb-0">
+          <li class="page-item">
             <button
               class="page-link"
+              aria-label="Previous"
               @click="$emit('before_page_btn', currentPage - 1)"
               :disabled="currentPage === 1"
             >
-              &leftarrow;
+              <span aria-hidden="true">&laquo;</span>
             </button>
           </li>
 
@@ -28,13 +29,14 @@
             </button>
           </li>
 
-          <li>
+          <li class="page-item">
             <button
               class="page-link"
+              aria-label="Next"
               @click="$emit('after_page_btn', currentPage + 1)"
               :disabled="currentPage === lastPage"
             >
-              &rightarrow;
+              <span aria-hidden="true">&raquo;</span>
             </button>
           </li>
         </ul>
