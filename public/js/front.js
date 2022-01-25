@@ -5215,6 +5215,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Post",
   props: {
@@ -5236,6 +5241,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
 //
 //
 //
@@ -38917,15 +38924,9 @@ var render = function () {
         _c("PostPageControl", {
           attrs: { lastPage: _vm.lastPage, currentPage: _vm.currentPage },
           on: {
-            before_page_btn: function ($event) {
-              return _vm.getData(_vm.currentPage - 1)
-            },
-            after_page_btn: function ($event) {
-              return _vm.getData(_vm.currentPage + 1)
-            },
-            change_page_num: function ($event) {
-              return _vm.getData(_vm.page)
-            },
+            before_page_btn: _vm.getData,
+            after_page_btn: _vm.getData,
+            change_page_num: _vm.getData,
           },
         }),
         _vm._v(" "),
@@ -38981,10 +38982,12 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "col py-4" }, [
     _c("div", { staticClass: "card post_card" }, [
-      _c("img", {
-        staticClass: "card-img-top",
-        attrs: { src: "", alt: "post_image" },
-      }),
+      _vm.post.coverImg
+        ? _c("img", {
+            staticClass: "card-img-top",
+            attrs: { src: _vm.post.coverImg, alt: "post_image" },
+          })
+        : _vm._e(),
       _vm._v(" "),
       _c("div", { staticClass: "card-body" }, [
         _c("h5", { staticClass: "card-title mb-3" }, [
@@ -39072,9 +39075,10 @@ var render = function () {
                 "button",
                 {
                   staticClass: "page-link",
+                  attrs: { disabled: _vm.currentPage === 1 },
                   on: {
                     click: function ($event) {
-                      return _vm.$emit("before_page_btn", _vm.currentPage)
+                      return _vm.$emit("before_page_btn", _vm.currentPage - 1)
                     },
                   },
                 },
@@ -39118,9 +39122,10 @@ var render = function () {
                 "button",
                 {
                   staticClass: "page-link",
+                  attrs: { disabled: _vm.currentPage === _vm.lastPage },
                   on: {
                     click: function ($event) {
-                      return _vm.$emit("after_page_btn", _vm.currentPage)
+                      return _vm.$emit("after_page_btn", _vm.currentPage + 1)
                     },
                   },
                 },

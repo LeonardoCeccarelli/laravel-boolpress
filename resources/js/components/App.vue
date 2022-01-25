@@ -4,9 +4,9 @@
       <PostPageControl
         :lastPage="lastPage"
         :currentPage="currentPage"
-        @before_page_btn="getData(currentPage - 1)"
-        @after_page_btn="getData(currentPage + 1)"
-        @change_page_num="getData(page)"
+        @before_page_btn="getData"
+        @after_page_btn="getData"
+        @change_page_num="getData"
       ></PostPageControl>
       <div class="row row-cols-1">
         <Post v-for="(post, i) in listPost" :key="i" :post="post"></Post>

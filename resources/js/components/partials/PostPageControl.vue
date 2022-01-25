@@ -6,7 +6,8 @@
           <li>
             <button
               class="page-link"
-              @click="$emit('before_page_btn', currentPage)"
+              @click="$emit('before_page_btn', currentPage - 1)"
+              :disabled="currentPage === 1"
             >
               &leftarrow;
             </button>
@@ -30,7 +31,8 @@
           <li>
             <button
               class="page-link"
-              @click="$emit('after_page_btn', currentPage)"
+              @click="$emit('after_page_btn', currentPage + 1)"
+              :disabled="currentPage === lastPage"
             >
               &rightarrow;
             </button>

@@ -13,7 +13,7 @@ class PostController extends Controller
         $data = Post::with("category")
             ->with("user:id,name")
             ->with("tags")
-            ->paginate(2);
+            ->paginate(5);
 
         return $data;
     }
