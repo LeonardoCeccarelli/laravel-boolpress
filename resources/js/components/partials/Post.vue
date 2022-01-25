@@ -15,11 +15,11 @@
 
         <div>
           <h6
-            class="d-inline-block mr-1"
+            class="d-inline-block me-1"
             v-for="tag in post.tags"
             :key="tag.id"
           >
-            <span class="badge badge-secondary">{{ tag.name }}</span>
+            <span class="badge bg-secondary">{{ tag.name }}</span>
           </h6>
         </div>
 

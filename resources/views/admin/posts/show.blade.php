@@ -40,14 +40,14 @@
     <h4 class="mb-4">Autore: {{ $post->user->name }}</h4>
 
     <div class="d-flex">
-        <a href="{{ route('admin.posts.edit', $post->id) }}" class="btn btn-success">Modifica</a>
+        <a href="{{ route('admin.posts.edit', $post->id) }}" class="btn btn-success text-light">Modifica</a>
 
-        <form action="{{ route('admin.posts.destroy', $post->id) }}" method="post" class="ml-3">
+        <form action="{{ route('admin.posts.destroy', $post->id) }}" method="post" class="ms-3">
 
             @csrf
             @method("delete")
 
-            <button type="submit" class="btn btn-danger">Elimina</button>
+            <button type="submit" class="btn btn-danger text-light">Elimina</button>
         </form>
     </div>
 </div>

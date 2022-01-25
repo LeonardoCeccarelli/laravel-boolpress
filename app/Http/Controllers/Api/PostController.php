@@ -11,7 +11,7 @@ class PostController extends Controller
     public function getAll()
     {
         $data = Post::with("category")
-            ->with("user")
+            ->with("user:id,name")
             ->with("tags")
             ->get();
 

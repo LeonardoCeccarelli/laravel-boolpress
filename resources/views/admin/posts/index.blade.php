@@ -17,8 +17,8 @@
                         </h6>
                     </div>
                     <div>
-                        <a href="{{ route('admin.posts.show', $post->id) }}"
-                            class="btn btn-sm btn-primary btn_hover">Info</a>
+                        <a href="{{ route('admin.posts.show', $post->id) }}" role="button"
+                            class="btn btn-sm btn-primary btn_hover text-light">Info</a>
                     </div>
                 </div>
             </div>
