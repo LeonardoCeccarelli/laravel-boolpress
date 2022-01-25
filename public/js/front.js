@@ -5167,7 +5167,7 @@ __webpack_require__.r(__webpack_exports__);
         _this.lastPage = resp.data.last_page;
         setTimeout(function () {
           _this.onLoad = false;
-        }, 250);
+        }, 0);
       });
     }
   },

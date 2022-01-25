@@ -62,7 +62,7 @@ export default {
         this.lastPage = resp.data.last_page;
         setTimeout(() => {
           this.onLoad = false;
-        }, 250);
+        }, 0);
       });
     },
   },
