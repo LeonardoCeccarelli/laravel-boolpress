@@ -1,6 +1,7 @@
 <template>
   <section class="body_homepage">
-    <div class="container mb-5">
+    <Loader v-if="onLoad"></Loader>
+    <div v-else class="container mb-5">
       <PostPageControl
         :lastPage="lastPage"
         :currentPage="currentPage"
@@ -23,6 +24,7 @@
 </template>
 
 <script>
+import Loader from "./partials/Loader.vue";
 import Post from "./partials/Post.vue";
 import PostPageControl from "./partials/PostPageControl.vue";
 export default {
@@ -30,12 +32,14 @@ export default {
   components: {
     Post,
     PostPageControl,
+    Loader,
   },
   data() {
     return {
       listPost: [],
       currentPage: 1,
       lastPage: null,
+      onLoad: true,
     };
   },
   methods: {
@@ -50,10 +54,15 @@ export default {
         return;
       }
 
+      this.onLoad = true;
+
       window.axios.get("/api/posts?page=" + page).then((resp) => {
         this.listPost = resp.data.data;
         this.currentPage = resp.data.current_page;
         this.lastPage = resp.data.last_page;
+        setTimeout(() => {
+          this.onLoad = false;
+        }, 250);
       });
     },
   },
