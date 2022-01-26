@@ -8,7 +8,14 @@
         alt="post_image"
       />
       <div class="card-body">
-        <h5 class="card-title mb-3">{{ post.title }}</h5>
+        <h5 class="card-title mb-3">
+          <router-link
+            :to="{ name: 'posts.show', params: { id: post.id } }"
+            class="text-dark text-decoration-none fw-bold"
+          >
+            {{ post.title }}
+          </router-link>
+        </h5>
 
         <h6 class="mb-3" v-if="post.subtitle">{{ post.subtitle }}</h6>
 

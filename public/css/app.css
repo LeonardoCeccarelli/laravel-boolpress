@@ -12205,7 +12205,7 @@ fieldset:disabled .btn {
           backdrop-filter: blur(3px);
   background-color: rgba(255, 255, 255, 0.5);
   font-size: 40px;
-  width: 50%;
+  max-width: 50%;
 }
 
 .post_card {
@@ -12218,7 +12218,7 @@ fieldset:disabled .btn {
 
 .post_card .author_name {
   position: absolute;
-  top: 0;
+  bottom: 0;
   right: 0;
   padding: 10px;
   opacity: 0;
