@@ -18,57 +18,8 @@
 </head>
 
 <body>
-    <div>
-        @if (Route::has('login'))
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
-            <div class="container">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0 ml-auto">
-                        @auth
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('admin.home') }}">Home</a>
-                        </li>
-                        @else
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">Login</a>
-                        </li>
-                        @if (Route::has('register'))
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">Register</a>
-                        </li>
-                        @endif
-                        @endauth
-                    </ul>
-                </div>
-            </div>
-        </nav>
-        @endif
-        <div class="hero_section">
-            <h1 class="main_title">Boolean Blog</h1>
-        </div>
-        <div id="app">
-            {{-- Content Vue here --}}
-        </div>
-
-        <div class="bg-dark">
-            <div class="container">
-                <footer class="py-4">
-                    <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-                        <li class="nav-item"><a href="#" class="nav-link px-2 text-light">Home</a></li>
-                        <li class="nav-item"><a href="#" class="nav-link px-2 text-light">Features</a></li>
-                        <li class="nav-item"><a href="#" class="nav-link px-2 text-light">Pricing</a></li>
-                        <li class="nav-item"><a href="#" class="nav-link px-2 text-light">FAQs</a></li>
-                        <li class="nav-item"><a href="#" class="nav-link px-2 text-light">About</a></li>
-                    </ul>
-                    <p class="text-center text-light">© 2021 Company, Inc</p>
-                </footer>
-            </div>
-        </div>
+    <div id="app">
+        {{-- Content Vue here --}}
     </div>
 </body>
 

@@ -1,7 +1,13 @@
 <template>
-  <section class="body_homepage">
+  <div>
+    <HeroSection
+      title="Boolean Blog"
+      subTitle="The most wonderful blog that will never exist"
+    ></HeroSection>
+
     <Loader v-if="onLoad"></Loader>
-    <div v-else class="container mb-5">
+
+    <div v-else class="container">
       <PostPageControl
         :lastPage="lastPage"
         :currentPage="currentPage"
@@ -12,6 +18,7 @@
       <div class="row row-cols-1">
         <Post v-for="(post, i) in listPost" :key="i" :post="post"></Post>
       </div>
+
       <PostPageControl
         :lastPage="lastPage"
         :currentPage="currentPage"
@@ -20,19 +27,20 @@
         @change_page_num="getData(page)"
       ></PostPageControl>
     </div>
-  </section>
+  </div>
 </template>
 
 <script>
-import Loader from "./partials/Loader.vue";
-import Post from "./partials/Post.vue";
-import PostPageControl from "./partials/PostPageControl.vue";
+import HeroSection from "../components/HeroSection.vue";
+import Loader from "../components/Loader.vue";
+import PostPageControl from "../components/PostPageControl.vue";
+import Post from "../components/Post.vue";
 export default {
-  name: "App",
   components: {
-    Post,
-    PostPageControl,
+    HeroSection,
     Loader,
+    PostPageControl,
+    Post,
   },
   data() {
     return {
@@ -42,6 +50,7 @@ export default {
       onLoad: true,
     };
   },
+
   methods: {
     getData(page = 1) {
       if (page < 1) {
@@ -66,8 +75,12 @@ export default {
       });
     },
   },
+
   mounted() {
     this.getData();
   },
 };
 </script>
+
+<style>
+</style>
