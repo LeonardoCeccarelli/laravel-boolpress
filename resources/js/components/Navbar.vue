@@ -33,6 +33,9 @@
           <li class="nav-item">
             <a class="nav-link" href="/login">Login</a>
           </li>
+          <!-- <li class="nav-item">
+            <a class="nav-link" href="/register">Register</a>
+          </li> -->
         </ul>
       </div>
     </div>
@@ -42,6 +45,24 @@
 <script>
 export default {
   name: "Navbar",
+  data() {
+    return {
+      auth: {
+        type: Boolean,
+      },
+    };
+  },
+  methods: {
+    getUser() {
+      //   console.log("funziona");
+      window.axios.get("/api/user").then((resp) => {
+        console.log(resp);
+      });
+    },
+  },
+  mounted() {
+    // this.getUser();
+  },
 };
 </script>
 

@@ -5272,8 +5272,28 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "Navbar"
+  name: "Navbar",
+  data: function data() {
+    return {
+      auth: {
+        type: Boolean
+      }
+    };
+  },
+  methods: {
+    getUser: function getUser() {
+      //   console.log("funziona");
+      window.axios.get("/api/user").then(function (resp) {
+        console.log(resp);
+      });
+    }
+  },
+  mounted: function mounted() {// this.getUser();
+  }
 });
 
 /***/ }),
