@@ -21,7 +21,11 @@ class PostController extends Controller
 
     public function getSingle($id)
     {
-        $data = Post::where("id", $id)->first();
+        $data = Post::where("id", $id)
+            ->with("category")
+            ->with("user:id,name")
+            ->with("tags")
+            ->first();
 
         if (!$data) {
             throw new HttpException("Post non trovato");
