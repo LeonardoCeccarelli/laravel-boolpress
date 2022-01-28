@@ -5,7 +5,8 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Post;
-use Symfony\Component\HttpKernel\Exception\HttpException;
+// use Symfony\Component\HttpKernel\Exception\HttpException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class PostController extends Controller
 {
@@ -28,7 +29,7 @@ class PostController extends Controller
             ->first();
 
         if (!$data) {
-            throw new HttpException("Post non trovato");
+            throw new NotFoundHttpException("Post non trovato");
         }
 
         return $data;
