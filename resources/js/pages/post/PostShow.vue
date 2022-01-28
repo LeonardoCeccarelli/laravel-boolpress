@@ -30,7 +30,7 @@ export default {
           this.post = resp.data;
         })
         .catch(() => {
-          this.$router.push({ name: "NotFound" });
+          this.$router.replace({ name: "NotFound" });
         });
     },
   },

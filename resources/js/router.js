@@ -5,6 +5,7 @@ import VueRouter from "vue-router"
 import Home from "./pages/Home.vue"
 import About from "./pages/About.vue"
 import Contact from "./pages/Contact.vue"
+import PostsIndex from "./pages/post/PostsIndex.vue"
 import PostShow from "./pages/post/PostShow.vue"
 import NotFound from "./pages/NotFound.vue"
 // end section import
@@ -28,6 +29,11 @@ const router = new VueRouter({
             path: "/contact",
             name: "contact",
             component: Contact
+        },
+        {
+            path: "/posts",
+            name: "posts.index",
+            component: PostsIndex
         },
         {
             path: "/posts/:id",

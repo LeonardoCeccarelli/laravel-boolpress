@@ -17,6 +17,11 @@
         <!-- Navbar sinistra -->
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
+            <router-link class="nav-link" :to="{ name: 'posts.index' }">
+              Post
+            </router-link>
+          </li>
+          <li class="nav-item">
             <router-link class="nav-link" :to="{ name: 'about' }">
               About
             </router-link>
