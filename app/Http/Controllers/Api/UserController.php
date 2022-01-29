@@ -8,14 +8,14 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
-    public function getUser()
+    public function getUser(Request $request)
     {
-        // $auth = false;
+        // $user = Auth::user()->id;
 
-        // if (Auth::all()) {
-        //     $auth = true;
-        // }
+        // if (!$user)
+        //     return null;
 
-        // return $auth;
+
+        return dd($request->user("api"));
     }
 }

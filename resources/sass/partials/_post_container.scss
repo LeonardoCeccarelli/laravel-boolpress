@@ -17,6 +17,14 @@
     &:hover .author_name {
         opacity: 1;
     } 
+
+    .category_link {
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
 }
 
 .nav_page_control {

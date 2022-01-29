@@ -1,6 +1,6 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
-    <div class="container">
+    <div class="container main_navbar">
       <router-link class="navbar-brand" to="/"> Boolean Blog </router-link>
       <button
         class="navbar-toggler"
@@ -52,8 +52,8 @@ export default {
   name: "Navbar",
   data() {
     return {
-      auth: {
-        type: Boolean,
+      user: {
+        type: String,
       },
     };
   },
@@ -61,7 +61,7 @@ export default {
     getUser() {
       //   console.log("funziona");
       window.axios.get("/api/user").then((resp) => {
-        console.log(resp);
+        this.user = resp.data;
       });
     },
   },

@@ -22,7 +22,12 @@
         <p class="card-text my-5" v-html="post.content"></p>
 
         <h6 class="class-text">
-          Categoria: <span class="text-success">{{ post.category.name }}</span>
+          Categoria:
+          <router-link
+            :to="{ name: 'categories.show', params: { id: post.category.id } }"
+            class="category_link text-success"
+            >{{ post.category.name }}</router-link
+          >
         </h6>
 
         <div>

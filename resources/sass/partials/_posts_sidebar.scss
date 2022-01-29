@@ -1,0 +1,39 @@
+.dropdown_container {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.65);
+    position: relative;
+    overflow: hidden;
+
+    .title_filter {
+        cursor: pointer;
+    }
+
+    .title_filter i {
+        color: white;
+        transform: rotateZ(0);
+        transition: all .2s linear;
+
+        &.active {
+            color: $blue !important;
+            transform: rotateZ(180deg);
+        }
+    }
+
+    .categories_container {
+        opacity: 0;
+        position: absolute;
+        bottom: 100%;
+        z-index: -1;
+        transition: all .3s linear;
+
+        &.active {
+            opacity: 1;
+            transform: translateY(0);
+            position: relative;
+            z-index: 1;
+        }
+
+        li.form-check:first-child {
+            margin-top: .7 rem !important;
+        }
+    }
+}

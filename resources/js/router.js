@@ -7,6 +7,7 @@ import About from "./pages/About.vue"
 import Contact from "./pages/Contact.vue"
 import PostsIndex from "./pages/post/PostsIndex.vue"
 import PostShow from "./pages/post/PostShow.vue"
+import CategoryShow from "./pages/category/CategoryShow.vue"
 import NotFound from "./pages/NotFound.vue"
 // end section import
 
@@ -44,6 +45,11 @@ const router = new VueRouter({
             path: "/posts/*",
             name: "NotFound",
             component: NotFound
+        },
+        {
+            path: "/categories/:id",
+            name: "categories.show",
+            component: CategoryShow
         },
         {
             path: "/*",
