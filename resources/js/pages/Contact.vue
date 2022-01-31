@@ -2,7 +2,8 @@
   <div>
     <HeroSection title="Contact" subTitle=""></HeroSection>
     <h5 class="text-light py-5 text-center">Sezione Contact</h5>
-    <div class="container pb-5">
+    <Loader v-if="onLoad"></Loader>
+    <div v-else class="container pb-5">
       <form v-if="!formSend" @submit.prevent="onFormSubmit">
         <div class="form-group mb-3">
           <label class="form-label text-light">Nome</label>
@@ -36,10 +37,12 @@
 
 <script>
 import HeroSection from "../components/HeroSection.vue";
+import Loader from "../components/Loader.vue";
 export default {
-  components: { HeroSection },
+  components: { HeroSection, Loader },
   data() {
     return {
+      onLoad: false,
       formSend: false,
       form: {
         name: "",
@@ -51,7 +54,9 @@ export default {
 
   methods: {
     onFormSubmit() {
+      this.onLoad = true;
       window.axios.post("/api/contacts", this.form).then((resp) => {
+        this.onLoad = false;
         this.formSend = true;
       });
     },
