@@ -5582,6 +5582,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 
@@ -5595,7 +5596,8 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      listPost: []
+      listPost: [],
+      scrolledToBottom: false
     };
   },
   methods: {
@@ -5605,10 +5607,22 @@ __webpack_require__.r(__webpack_exports__);
       window.axios.get("/api/posts/home").then(function (resp) {
         _this.listPost = resp.data;
       });
+    },
+    scroll: function scroll() {
+      var _this2 = this;
+
+      window.onscroll = function () {
+        var bottomOfWindow = Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop) + window.innerHeight === document.documentElement.offsetHeight;
+
+        if (bottomOfWindow) {
+          _this2.scrolledToBottom = true; // replace it with your code
+        }
+      };
     }
   },
   mounted: function mounted() {
     this.getPosts();
+    this.scroll();
   }
 });
 
@@ -5881,6 +5895,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -5909,6 +5935,10 @@ __webpack_require__.r(__webpack_exports__);
 
       var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
 
+      if (page > 1 && this.onLoad) {
+        return;
+      }
+
       if (page < 1) {
         page = 1;
       } else if (page > this.lastPage) {
@@ -5926,12 +5956,14 @@ __webpack_require__.r(__webpack_exports__);
           category: this.filterCategories
         }
       }).then(function (resp) {
-        _this.listPost = resp.data.data;
+        resp.data.data.forEach(function (post) {
+          _this.listPost.push(post);
+        });
         _this.currentPage = resp.data.current_page;
         _this.lastPage = resp.data.last_page;
         setTimeout(function () {
           _this.onLoad = false;
-        }, 0);
+        }, 1000);
       });
     },
     getFilteredPosts: function getFilteredPosts() {
@@ -5963,11 +5995,23 @@ __webpack_require__.r(__webpack_exports__);
     },
     changeCategoriesFilter: function changeCategoriesFilter() {
       this.handleSidebarCategories = this.handleSidebarCategories ? false : true;
+    },
+    scroll: function scroll() {
+      var _this4 = this;
+
+      window.onscroll = function () {
+        var bottomOfWindow = Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop) + window.innerHeight === document.documentElement.offsetHeight;
+
+        if (bottomOfWindow && _this4.lastPage >= 6) {
+          _this4.getPosts(_this4.currentPage + 1);
+        }
+      };
     }
   },
   mounted: function mounted() {
     this.getPosts();
     this.getCategories();
+    this.scroll();
   }
 });
 
@@ -40360,6 +40404,10 @@ var render = function () {
         },
       }),
       _vm._v(" "),
+      _vm.scrolledToBottom
+        ? _c("h3", { staticClass: "text-light" }, [_vm._v("Scroll arrivo")])
+        : _vm._e(),
+      _vm._v(" "),
       _c("h1", { staticClass: "text-center text-light py-5" }, [
         _vm._v("Sezione Home con ultimi 5 post"),
       ]),
@@ -40570,187 +40618,168 @@ var render = function () {
         attrs: { title: "Boolean Post", subTitle: "Tutti i post" },
       }),
       _vm._v(" "),
-      _vm.onLoad
-        ? _c("Loader")
-        : _c("div", { staticClass: "container" }, [
-            _c("div", { staticClass: "row pt-5" }, [
-              _c(
-                "div",
-                { staticClass: "col-9" },
-                [
-                  _vm.lastPage > 1
-                    ? _c("PostPageControl", {
-                        attrs: {
-                          lastPage: _vm.lastPage,
-                          currentPage: _vm.currentPage,
-                        },
-                        on: {
-                          before_page_btn: _vm.getPosts,
-                          after_page_btn: _vm.getPosts,
-                          change_page_num: _vm.getPosts,
-                        },
-                      })
-                    : _vm._e(),
-                  _vm._v(" "),
-                  _vm.listPost.length
-                    ? _c(
-                        "div",
-                        { staticClass: "row row-cols-1" },
-                        _vm._l(_vm.listPost, function (post) {
-                          return _c("Post", {
-                            key: post.id,
-                            attrs: { post: post },
-                          })
-                        }),
-                        1
-                      )
-                    : _vm._e(),
-                  _vm._v(" "),
-                  !_vm.listPost.length
-                    ? _c("div", { staticClass: "row row-cols-1" }, [
-                        _c(
-                          "h3",
-                          { staticClass: "text-center text-light py-3" },
-                          [
-                            _vm._v(
-                              "\n            Ancora nessun dato disponibile\n          "
-                            ),
-                          ]
-                        ),
-                      ])
-                    : _vm._e(),
-                  _vm._v(" "),
-                  _vm.lastPage > 1
-                    ? _c("PostPageControl", {
-                        attrs: {
-                          lastPage: _vm.lastPage,
-                          currentPage: _vm.currentPage,
-                        },
-                        on: {
-                          before_page_btn: _vm.getPosts,
-                          after_page_btn: _vm.getPosts,
-                          change_page_num: _vm.getPosts,
-                        },
-                      })
-                    : _vm._e(),
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-3" }, [
-                _c("h3", { staticClass: "text-light" }, [
-                  _vm._v("Filtra per:"),
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "dropdown_container py-4 ps-2" }, [
-                  _c(
-                    "h5",
-                    {
-                      staticClass:
-                        "title_filter text-light mb-0 dropdown_pointer",
-                      on: {
-                        click: function ($event) {
-                          return _vm.changeCategoriesFilter()
-                        },
-                      },
-                    },
+      _c("div", { staticClass: "container" }, [
+        _c("div", { staticClass: "row py-5" }, [
+          _c(
+            "div",
+            { staticClass: "col-9" },
+            [
+              _vm.listPost.length
+                ? _c(
+                    "div",
+                    { staticClass: "row row-cols-1 justify-content-center" },
                     [
-                      _vm._v("\n            Categoria\n            "),
-                      _c("i", {
-                        staticClass: "fas fa-angle-down text-light ms-2",
-                        class: _vm.handleSidebarCategories ? "active" : "",
+                      _vm._l(_vm.listPost, function (post) {
+                        return _c("Post", {
+                          key: post.id,
+                          attrs: { post: post },
+                        })
                       }),
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "ul",
-                    {
-                      staticClass: "categories_container ps-0 my-0",
-                      class: _vm.handleSidebarCategories ? "active" : "",
-                    },
-                    _vm._l(_vm.listCategories, function (category) {
-                      return _c(
-                        "li",
-                        {
-                          key: category.id,
-                          staticClass: "form-check text-light mt-2",
-                        },
-                        [
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.filterCategories,
-                                expression: "filterCategories",
-                              },
-                            ],
-                            staticClass: "form-check-input",
-                            attrs: {
-                              type: "radio",
-                              name: "categories",
-                              id: category.name,
-                            },
-                            domProps: {
-                              value: category.id,
-                              checked: _vm._q(
-                                _vm.filterCategories,
-                                category.id
-                              ),
-                            },
-                            on: {
-                              change: function ($event) {
-                                _vm.filterCategories = category.id
-                              },
-                            },
-                          }),
-                          _vm._v(" "),
-                          _c(
-                            "label",
+                      _vm._v(" "),
+                      _vm.lastPage < 6 &&
+                      !_vm.onLoad &&
+                      _vm.currentPage != _vm.lastPage
+                        ? _c(
+                            "button",
                             {
-                              staticClass: "form-check-label",
-                              attrs: { for: category.name },
+                              staticClass: "btn btn-outline-info w-25 mb-5",
+                              on: {
+                                click: function ($event) {
+                                  return _vm.getPosts(_vm.currentPage + 1)
+                                },
+                              },
                             },
                             [
                               _vm._v(
-                                "\n                " +
-                                  _vm._s(category.name) +
-                                  "\n              "
+                                "\n            Mostra altri risultati\n          "
                               ),
                             ]
-                          ),
-                        ]
-                      )
-                    }),
-                    0
-                  ),
-                ]),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "d-flex justify-content-center align-items-center py-3",
+                          )
+                        : _vm._e(),
+                    ],
+                    2
+                  )
+                : _c("div", { staticClass: "row row-cols-1" }, [
+                    _c("h3", { staticClass: "text-center text-light py-3" }, [
+                      _vm._v(
+                        "\n            Ancora nessun dato disponibile\n          "
+                      ),
+                    ]),
+                  ]),
+              _vm._v(" "),
+              _vm.onLoad ? _c("Loader") : _vm._e(),
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-3" }, [
+            _c("h3", { staticClass: "text-light" }, [_vm._v("Filtra per:")]),
+            _vm._v(" "),
+            _c("div", { staticClass: "dropdown_container py-4 ps-2" }, [
+              _c(
+                "h5",
+                {
+                  staticClass: "title_filter text-light mb-0 dropdown_pointer",
+                  on: {
+                    click: function ($event) {
+                      return _vm.changeCategoriesFilter()
+                    },
                   },
-                  [
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-success text-light",
+                },
+                [
+                  _vm._v("\n            Categoria\n            "),
+                  _c("i", {
+                    staticClass: "fas fa-angle-down text-light ms-2",
+                    class: _vm.handleSidebarCategories ? "active" : "",
+                  }),
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "ul",
+                {
+                  staticClass: "categories_container ps-0 my-0",
+                  class: _vm.handleSidebarCategories ? "active" : "",
+                },
+                _vm._l(_vm.listCategories, function (category) {
+                  return _c(
+                    "li",
+                    {
+                      key: category.id,
+                      staticClass: "form-check text-light mt-2",
+                    },
+                    [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.filterCategories,
+                            expression: "filterCategories",
+                          },
+                        ],
+                        staticClass: "form-check-input",
+                        attrs: {
+                          type: "radio",
+                          name: "categories",
+                          id: category.name,
+                        },
+                        domProps: {
+                          value: category.id,
+                          checked: _vm._q(_vm.filterCategories, category.id),
+                        },
                         on: {
-                          click: function ($event) {
-                            return _vm.getFilteredPosts()
+                          change: function ($event) {
+                            _vm.filterCategories = category.id
                           },
                         },
-                      },
-                      [_vm._v("\n            Filtra\n          ")]
-                    ),
-                  ]
-                ),
-              ]),
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "label",
+                        {
+                          staticClass: "form-check-label",
+                          attrs: { for: category.name },
+                        },
+                        [
+                          _vm._v(
+                            "\n                " +
+                              _vm._s(category.name) +
+                              "\n              "
+                          ),
+                        ]
+                      ),
+                    ]
+                  )
+                }),
+                0
+              ),
             ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass:
+                  "d-flex justify-content-center align-items-center py-3",
+              },
+              [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-success text-light",
+                    on: {
+                      click: function ($event) {
+                        return _vm.getFilteredPosts()
+                      },
+                    },
+                  },
+                  [_vm._v("\n            Filtra\n          ")]
+                ),
+              ]
+            ),
           ]),
+        ]),
+      ]),
     ],
     1
   )

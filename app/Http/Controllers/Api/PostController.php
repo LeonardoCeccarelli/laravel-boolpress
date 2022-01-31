@@ -22,7 +22,7 @@ class PostController extends Controller
                 "user:id,name",
                 "tags"
             ]
-        )->orderBy("created_at", "DESC")->paginate(2);
+        )->orderBy("created_at", "DESC")->paginate(3);
 
         if (Category::find($category)) {
             $data = Post::where("category_id", $category)
@@ -32,7 +32,7 @@ class PostController extends Controller
                         "user:id,name",
                         "tags"
                     ]
-                )->orderBy("created_at", "DESC")->paginate(2);
+                )->orderBy("created_at", "DESC")->paginate(3);
         }
 
         return $data;
@@ -48,7 +48,7 @@ class PostController extends Controller
                 "user:id,name",
                 "tags"
             ]
-        )->orderBy("created_at", "DESC")->paginate(2);
+        )->orderBy("created_at", "DESC")->paginate(3);
 
         if (Category::find($category)) {
             $data = Post::where("category_id", $category)
@@ -58,7 +58,7 @@ class PostController extends Controller
                         "user:id,name",
                         "tags"
                     ]
-                )->orderBy("created_at", "DESC")->paginate(2);
+                )->orderBy("created_at", "DESC")->paginate(3);
         }
 
         return $data;

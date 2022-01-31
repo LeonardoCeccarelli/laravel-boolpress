@@ -1,36 +1,48 @@
 <template>
   <div>
     <HeroSection title="Boolean Post" subTitle="Tutti i post"></HeroSection>
-    <Loader v-if="onLoad"></Loader>
 
-    <div v-else class="container">
-      <div class="row pt-5">
+    <div class="container">
+      <div class="row py-5">
         <div class="col-9">
-          <PostPageControl
+          <!-- <PostPageControl
             v-if="lastPage > 1"
             :lastPage="lastPage"
             :currentPage="currentPage"
             @before_page_btn="getPosts"
             @after_page_btn="getPosts"
             @change_page_num="getPosts"
-          ></PostPageControl>
-          <div v-if="listPost.length" class="row row-cols-1">
+          ></PostPageControl> -->
+          <div
+            v-if="listPost.length"
+            class="row row-cols-1 justify-content-center"
+          >
             <Post v-for="post in listPost" :key="post.id" :post="post"></Post>
+            <button
+              v-if="lastPage < 6 && !onLoad && currentPage != lastPage"
+              @click="getPosts(currentPage + 1)"
+              class="btn btn-outline-info w-25 mb-5"
+            >
+              Mostra altri risultati
+            </button>
           </div>
-          <div v-if="!listPost.length" class="row row-cols-1">
+
+          <div v-else class="row row-cols-1">
             <h3 class="text-center text-light py-3">
               Ancora nessun dato disponibile
             </h3>
           </div>
 
-          <PostPageControl
+          <Loader v-if="onLoad"></Loader>
+
+          <!-- <PostPageControl
             v-if="lastPage > 1"
             :lastPage="lastPage"
             :currentPage="currentPage"
             @before_page_btn="getPosts"
             @after_page_btn="getPosts"
             @change_page_num="getPosts"
-          ></PostPageControl>
+          ></PostPageControl> -->
         </div>
         <div class="col-3">
           <h3 class="text-light">Filtra per:</h3>
@@ -108,6 +120,10 @@ export default {
 
   methods: {
     getPosts(page = 1) {
+      if (page > 1 && this.onLoad) {
+        return;
+      }
+
       if (page < 1) {
         page = 1;
       } else if (page > this.lastPage) {
@@ -128,12 +144,15 @@ export default {
           },
         })
         .then((resp) => {
-          this.listPost = resp.data.data;
+          resp.data.data.forEach((post) => {
+            this.listPost.push(post);
+          });
+
           this.currentPage = resp.data.current_page;
           this.lastPage = resp.data.last_page;
           setTimeout(() => {
             this.onLoad = false;
-          }, 0);
+          }, 1000);
         });
     },
 
@@ -169,11 +188,29 @@ export default {
         ? false
         : true;
     },
+
+    scroll() {
+      window.onscroll = () => {
+        let bottomOfWindow =
+          Math.max(
+            window.pageYOffset,
+            document.documentElement.scrollTop,
+            document.body.scrollTop
+          ) +
+            window.innerHeight ===
+          document.documentElement.offsetHeight;
+
+        if (bottomOfWindow && this.lastPage >= 6) {
+          this.getPosts(this.currentPage + 1);
+        }
+      };
+    },
   },
 
   mounted() {
     this.getPosts();
     this.getCategories();
+    this.scroll();
   },
 };
 </script>
