@@ -8,6 +8,7 @@ use App\Post;
 use App\Category;
 use App\Tag;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -18,7 +19,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
+        $posts = Post::orderBy("created_at", "DESC")->get();
 
         return view("admin.posts.index", compact("posts"));
     }
@@ -51,13 +52,17 @@ class PostController extends Controller
             "title" => "required|max:255",
             "subtitle" => "max:255",
             "content" => "required",
-            "coverImg" => "max:255",
         ]);
 
         $data = $request->all();
         $newPost = new Post();
         $newPost->fill($data);
+
         $newPost->user_id = Auth::user()->id;
+
+        if ($request->file("coverImg")) {
+            $newPost->coverImg = Storage::put("posts", $data["coverImg"]);
+        }
 
         $newPost->save();
 
@@ -106,19 +111,28 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
+
         $request->validate([
             "title" => "required|max:255",
             "subtitle" => "max:255",
             "content" => "required",
-            "coverImg" => "max:255",
         ]);
 
         $data = $request->all();
+
+        $oldImage = $post->coverImg;
         $post->fill($data);
 
-        $post->save();
+        if ($request->file("coverImg")) {
 
-        // dd($data);
+            if ($oldImage) {
+                Storage::delete($oldImage);
+            }
+
+            $post->coverImg = $request->file("coverImg")->store("posts");
+        }
+
+        $post->save();
 
         if (array_key_exists("tags", $data)) {
             $post->tags()->sync($data["tags"]);

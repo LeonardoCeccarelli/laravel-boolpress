@@ -1,12 +1,6 @@
 <template>
   <div class="col py-4">
     <div class="card post_card">
-      <img
-        v-if="post.coverImg"
-        :src="post.coverImg"
-        class="card-img-top"
-        alt="post_image"
-      />
       <div class="card-body">
         <h5 class="card-title mb-3">
           <router-link

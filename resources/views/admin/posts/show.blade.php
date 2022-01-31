@@ -15,6 +15,11 @@
         @endif
     </div> --}}
     {{-- <p>&leftarrow;</p> --}}
+    <div class="w-25 mb-3">
+        @if ($post->coverImg)
+        <img src="{{ asset('storage/' . $post->coverImg) }}" alt="" class="w-100">
+        @endif
+    </div>
     <h1>Titolo: {{ $post->title }}</h1>
 
     @if ($post->subtitle)
