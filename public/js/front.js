@@ -40185,7 +40185,9 @@ var render = function () {
   return _c(
     "div",
     [
-      _c("HeroSection", { attrs: { title: "Contact", subTitle: "" } }),
+      _c("HeroSection", {
+        attrs: { title: "Contact", subTitle: "Chiedi ciò che vuoi" },
+      }),
       _vm._v(" "),
       _c("h5", { staticClass: "text-light py-5 text-center" }, [
         _vm._v("Sezione Contact"),

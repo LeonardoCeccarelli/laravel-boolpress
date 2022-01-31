@@ -1,6 +1,6 @@
 <template>
   <div>
-    <HeroSection title="Contact" subTitle=""></HeroSection>
+    <HeroSection title="Contact" subTitle="Chiedi ciò che vuoi"></HeroSection>
     <h5 class="text-light py-5 text-center">Sezione Contact</h5>
     <Loader v-if="onLoad"></Loader>
     <div v-else class="container pb-5">
