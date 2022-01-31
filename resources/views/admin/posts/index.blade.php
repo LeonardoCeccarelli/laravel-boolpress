@@ -25,6 +25,9 @@
         </div>
         @endforeach
     </div>
+    <div class="d-flex justify-content-center py-4">
+        {!! $posts->onEachSide(2)->links() !!}
+    </div>
 </div>
 @endif
 @endsection
