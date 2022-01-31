@@ -80,4 +80,18 @@ class PostController extends Controller
 
         return $data;
     }
+
+    public function getInHome()
+    {
+        $data = Post::with(
+            [
+                "category",
+                "user:id,name",
+                "tags"
+            ]
+        )->orderBy("created_at", "DESC")
+            ->limit(5)->get();
+
+        return $data;
+    }
 }

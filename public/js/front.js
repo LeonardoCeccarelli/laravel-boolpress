@@ -5577,6 +5577,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 
@@ -5589,10 +5594,22 @@ __webpack_require__.r(__webpack_exports__);
     Post: _components_Post_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
   },
   data: function data() {
-    return {};
+    return {
+      listPost: []
+    };
   },
-  methods: {},
-  mounted: function mounted() {}
+  methods: {
+    getPosts: function getPosts() {
+      var _this = this;
+
+      window.axios.get("/api/posts/home").then(function (resp) {
+        _this.listPost = resp.data;
+      });
+    }
+  },
+  mounted: function mounted() {
+    this.getPosts();
+  }
 });
 
 /***/ }),
@@ -40346,6 +40363,17 @@ var render = function () {
       _c("h1", { staticClass: "text-center text-light py-5" }, [
         _vm._v("Sezione Home con ultimi 5 post"),
       ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "container" }, [
+        _c(
+          "div",
+          { staticClass: "row row-cols-1" },
+          _vm._l(_vm.listPost, function (post) {
+            return _c("Post", { key: post.id, attrs: { post: post } })
+          }),
+          1
+        ),
+      ]),
     ],
     1
   )
@@ -40568,8 +40596,11 @@ var render = function () {
                     ? _c(
                         "div",
                         { staticClass: "row row-cols-1" },
-                        _vm._l(_vm.listPost, function (post, i) {
-                          return _c("Post", { key: i, attrs: { post: post } })
+                        _vm._l(_vm.listPost, function (post) {
+                          return _c("Post", {
+                            key: post.id,
+                            attrs: { post: post },
+                          })
                         }),
                         1
                       )

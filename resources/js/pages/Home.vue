@@ -5,6 +5,11 @@
       subTitle="The most wonderful blog that will never exist"
     ></HeroSection>
     <h1 class="text-center text-light py-5">Sezione Home con ultimi 5 post</h1>
+    <div class="container">
+      <div class="row row-cols-1">
+        <Post v-for="post in listPost" :key="post.id" :post="post"></Post>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -21,12 +26,22 @@ export default {
     Post,
   },
   data() {
-    return {};
+    return {
+      listPost: [],
+    };
   },
 
-  methods: {},
+  methods: {
+    getPosts() {
+      window.axios.get("/api/posts/home").then((resp) => {
+        this.listPost = resp.data;
+      });
+    },
+  },
 
-  mounted() {},
+  mounted() {
+    this.getPosts();
+  },
 };
 </script>
 
