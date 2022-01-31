@@ -11,11 +11,11 @@ class ContactController extends Controller
 {
     public function store(Request $request)
     {
-        // $request->validate([
-        //     "name" => "required|max:255",
-        //     "email" => "required|email:rfc,dns,strict,spoof,filter|max:255",
-        //     "message" => "required|max:5000",
-        // ]);
+        $request->validate([
+            "name" => "required|max:255",
+            "email" => "required|email:rfc,dns,strict,spoof,filter|max:255",
+            "message" => "required|max:5000",
+        ]);
 
         $data = $request->all();
 
