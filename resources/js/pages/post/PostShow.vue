@@ -5,6 +5,9 @@
       subTitle="The most wonderful blog that will never exist"
     ></HeroSection>
     <div class="container py-5">
+      <div class="w-25 mb-3">
+        <img v-if="post.coverImg" :src="post.coverImg" alt="" class="w-100" />
+      </div>
       <h1 class="text-light">{{ post.title }}</h1>
     </div>
   </div>

@@ -5362,12 +5362,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Post",
   props: {
@@ -5667,6 +5661,9 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_HeroSection_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../components/HeroSection.vue */ "./resources/js/components/HeroSection.vue");
+//
+//
+//
 //
 //
 //
@@ -39878,13 +39875,6 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "col py-4" }, [
     _c("div", { staticClass: "card post_card" }, [
-      _vm.post.coverImg
-        ? _c("img", {
-            staticClass: "card-img-top",
-            attrs: { src: _vm.post.coverImg, alt: "post_image" },
-          })
-        : _vm._e(),
-      _vm._v(" "),
       _c("div", { staticClass: "card-body" }, [
         _c(
           "h5",
@@ -40333,6 +40323,15 @@ var render = function () {
       }),
       _vm._v(" "),
       _c("div", { staticClass: "container py-5" }, [
+        _c("div", { staticClass: "w-25 mb-3" }, [
+          _vm.post.coverImg
+            ? _c("img", {
+                staticClass: "w-100",
+                attrs: { src: _vm.post.coverImg, alt: "" },
+              })
+            : _vm._e(),
+        ]),
+        _vm._v(" "),
         _c("h1", { staticClass: "text-light" }, [
           _vm._v(_vm._s(_vm.post.title)),
         ]),

@@ -76,6 +76,8 @@ class PostController extends Controller
             throw new NotFoundHttpException("Post non trovato");
         }
 
+        $data["coverImg"] = url("storage/" . $data["coverImg"]);
+
         return $data;
     }
 }
