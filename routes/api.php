@@ -25,6 +25,8 @@ Route::get("/posts/{id}", "Api\PostController@getSingle");
 Route::get("/categories", "Api\CategoryController@getAll");
 Route::get("/categories/{id}", "Api\CategoryController@getSingle");
 
+Route::post("/contacts", "Api\ContactController@store");
+
 // Route::group(['middleware' => 'auth:api'], function () {
 //     Route::get("/user", "Api\UserController@getUser");
 // });

@@ -2,6 +2,35 @@
   <div>
     <HeroSection title="Contact" subTitle=""></HeroSection>
     <h5 class="text-light py-5 text-center">Sezione Contact</h5>
+    <div class="container pb-5">
+      <form v-if="!formSend" @submit.prevent="onFormSubmit">
+        <div class="form-group mb-3">
+          <label class="form-label text-light">Nome</label>
+          <input type="text" class="form-control" v-model="form.name" />
+        </div>
+
+        <div class="form-group mb-3">
+          <label class="form-label text-light">Email</label>
+          <input type="email" class="form-control" v-model="form.email" />
+        </div>
+
+        <div class="form-group mb-3">
+          <label class="form-label text-light">Messaggio</label>
+          <textarea
+            type="text"
+            class="form-control"
+            v-model="form.message"
+          ></textarea>
+        </div>
+
+        <div class="text-center py-3">
+          <button class="btn btn-success text-light">Invia</button>
+        </div>
+      </form>
+      <div v-else class="alert alert-success">
+        <h5 class="mb-0">Messaggio inviato correttamente</h5>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -9,6 +38,25 @@
 import HeroSection from "../components/HeroSection.vue";
 export default {
   components: { HeroSection },
+  data() {
+    return {
+      formSend: false,
+      form: {
+        name: "",
+        email: "",
+        message: "",
+      },
+    };
+  },
+
+  methods: {
+    onFormSubmit() {
+      window.axios.post("/api/contacts", this.form).then((resp) => {
+        this.formSend = true;
+      });
+    },
+  },
+  mounted() {},
 };
 </script>
 
