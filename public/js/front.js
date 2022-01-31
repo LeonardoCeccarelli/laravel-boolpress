@@ -5963,7 +5963,7 @@ __webpack_require__.r(__webpack_exports__);
         _this.lastPage = resp.data.last_page;
         setTimeout(function () {
           _this.onLoad = false;
-        }, 1000);
+        }, 0);
       });
     },
     getFilteredPosts: function getFilteredPosts() {
@@ -5981,9 +5981,6 @@ __webpack_require__.r(__webpack_exports__);
         _this2.listPost = resp.data.data;
         _this2.currentPage = resp.data.current_page;
         _this2.lastPage = resp.data.last_page;
-        setTimeout(function () {
-          _this2.onLoad = false;
-        }, 0);
       });
     },
     getCategories: function getCategories() {

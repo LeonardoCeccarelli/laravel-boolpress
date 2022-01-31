@@ -152,7 +152,7 @@ export default {
           this.lastPage = resp.data.last_page;
           setTimeout(() => {
             this.onLoad = false;
-          }, 1000);
+          }, 0);
         });
     },
 
@@ -171,9 +171,6 @@ export default {
           this.listPost = resp.data.data;
           this.currentPage = resp.data.current_page;
           this.lastPage = resp.data.last_page;
-          setTimeout(() => {
-            this.onLoad = false;
-          }, 0);
         });
     },
 
