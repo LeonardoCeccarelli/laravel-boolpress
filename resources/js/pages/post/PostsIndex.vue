@@ -67,7 +67,7 @@
                 class="form-check text-light mt-2"
               >
                 <input
-                  class="form-check-input"
+                  class="form-check-input text-success"
                   type="radio"
                   name="categories"
                   :id="category.name"

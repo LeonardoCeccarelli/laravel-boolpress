@@ -40715,7 +40715,7 @@ var render = function () {
                             expression: "filterCategories",
                           },
                         ],
-                        staticClass: "form-check-input",
+                        staticClass: "form-check-input text-success",
                         attrs: {
                           type: "radio",
                           name: "categories",
